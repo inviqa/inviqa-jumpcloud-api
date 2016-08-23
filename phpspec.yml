@@ -1,0 +1,4 @@
+suites:
+    jumpcloud_suite:
+        namespace: Inviqa\JumpCloud\Api
+        psr4_prefix: Inviqa\JumpCloud\Api

@@ -1,0 +1,25 @@
+{
+    "name": "inviqa/jumpcloud-api",
+    "type": "library",
+    "require": {
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpspec/phpspec": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Inviqa\\JumpCloud\\Api\\": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andy Thompson",
+            "email": "athompson@inviqa.com"
+        }
+    ]
+}

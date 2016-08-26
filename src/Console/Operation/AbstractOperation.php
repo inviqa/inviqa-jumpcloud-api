@@ -66,4 +66,32 @@ abstract class AbstractOperation implements Operation
         $response = $this->client->get($this->formatUri($options, $id));
         return json_decode($response->getBody()->getContents(), true);
     }
+
+    public function post($data)
+    {
+        $response = $this->client->post(
+            $this->formatUri(),
+            [
+                'json' => $data
+            ]
+        );
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    public function put($id, $data)
+    {
+        $response = $this->client->put(
+            $this->formatUri([], $id),
+            [
+                'json' => $data
+            ]
+        );
+        return json_decode($response->getBody()->getContents(), true);
+    }
+
+    public function delete($id)
+    {
+        $response = $this->client->delete($this->formatUri([], $id));
+        return json_decode($response->getBody()->getContents(), true);
+    }
 }

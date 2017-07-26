@@ -1,12 +1,11 @@
 <?php
 
-namespace Inviqa\JumpCloud\Api\Console\Operation;
+namespace Inviqa\JumpCloud\Api\Console\Resource;
 
 use GuzzleHttp\Client as GuzzleClient;
 use GuzzleHttp\Psr7\Uri;
-use Inviqa\JumpCloud\Api\Operation;
 
-abstract class AbstractOperation implements Operation
+abstract class AbstractResource implements Resource
 {
     /**
      * @var string
@@ -43,7 +42,7 @@ abstract class AbstractOperation implements Operation
     {
         $autoPaginate = false;
         if (!array_key_exists('limit', $options)) {
-            $options['skip'] = 1;
+            $options['skip'] = 0;
             $options['limit'] = 10;
             $autoPaginate = true;
         }
@@ -57,7 +56,7 @@ abstract class AbstractOperation implements Operation
             if ($autoPaginate) {
                 $options['skip'] += $options['limit'];
             }
-        } while ($autoPaginate && $options['skip'] < $result['totalCount']);
+        } while ($autoPaginate && ($options['skip'] + 1) < $result['totalCount']);
         return $results;
     }
 

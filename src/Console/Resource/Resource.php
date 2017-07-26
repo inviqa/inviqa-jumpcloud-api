@@ -1,7 +1,7 @@
 <?php
-namespace Inviqa\JumpCloud\Api;
+namespace Inviqa\JumpCloud\Api\Console\Resource;
 
-interface Operation
+interface Resource
 {
     public function getName();
     public function fetch($options = []);

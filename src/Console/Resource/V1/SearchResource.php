@@ -1,8 +1,10 @@
 <?php
 
-namespace Inviqa\JumpCloud\Api\Console\Operation;
+namespace Inviqa\JumpCloud\Api\Console\Resource\V1;
 
-class SearchOperation extends AbstractOperation
+use Inviqa\JumpCloud\Api\Console\Resource\AbstractResource;
+
+class SearchResource extends AbstractResource
 {
     public function search($filter = [], $options = [])
     {

@@ -22,12 +22,12 @@ abstract class AbstractResource implements Resource
         $this->client = $client;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->endpoint;
     }
 
-    protected function formatUri($options, $id = null)
+    protected function formatUri(array $options, string $id = null): string
     {
         $uri = new Uri($this->endpoint . ($id ? '/' . $id : ''));
         foreach (['limit', 'skip', 'sort', 'fields'] as $key) {
@@ -38,7 +38,7 @@ abstract class AbstractResource implements Resource
         return $uri;
     }
 
-    public function fetch($options = [])
+    public function fetch(array $options = []): ResourceList
     {
         $autoPaginate = false;
         if (!array_key_exists('limit', $options)) {
@@ -57,16 +57,16 @@ abstract class AbstractResource implements Resource
                 $options['skip'] += $options['limit'];
             }
         } while ($autoPaginate && ($options['skip'] + 1) < $result['totalCount']);
-        return $results;
+        return new ResourceList($results['results'], $results['totalCount']);
     }
 
-    public function get($id, $options = [])
+    public function get(string $id, array $options = [])
     {
         $response = $this->client->get($this->formatUri($options, $id));
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function post($data)
+    public function post(array $data)
     {
         $response = $this->client->post(
             $this->formatUri(),
@@ -77,7 +77,7 @@ abstract class AbstractResource implements Resource
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function put($id, $data)
+    public function put(string $id, array $data)
     {
         $response = $this->client->put(
             $this->formatUri([], $id),
@@ -88,7 +88,7 @@ abstract class AbstractResource implements Resource
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    public function delete($id)
+    public function delete(string $id)
     {
         $response = $this->client->delete($this->formatUri([], $id));
         return json_decode($response->getBody()->getContents(), true);

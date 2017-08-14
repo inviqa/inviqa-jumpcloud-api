@@ -2,7 +2,7 @@
 
 namespace Inviqa\JumpCloud\Api\Console\Resource\V2;
 
-use Inviqa\JumpCloud\Api\Console\Resource\AbstractAssociations;
+use Inviqa\JumpCloud\Api\Console\AbstractAssociations;
 
 class UserGroupAssociations extends AbstractAssociations
 {

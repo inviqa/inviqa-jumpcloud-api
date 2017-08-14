@@ -2,7 +2,9 @@
 
 namespace Inviqa\JumpCloud\Api\Console\Resource\V2;
 
-class UserGroups extends AbstractResource
+use Inviqa\JumpCloud\Api\Console\AbstractResourceV2;
+
+class UserGroups extends AbstractResourceV2
 {
     /**
      * @var string

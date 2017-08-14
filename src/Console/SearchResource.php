@@ -1,8 +1,8 @@
 <?php
 
-namespace Inviqa\JumpCloud\Api\Console\Resource\V1;
+namespace Inviqa\JumpCloud\Api\Console;
 
-use Inviqa\JumpCloud\Api\Console\Resource\AbstractResource;
+use Inviqa\JumpCloud\Api\Console\AbstractResource;
 
 class SearchResource extends AbstractResource
 {

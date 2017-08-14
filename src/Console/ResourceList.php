@@ -1,6 +1,6 @@
 <?php
 
-namespace Inviqa\JumpCloud\Api\Console\Resource;
+namespace Inviqa\JumpCloud\Api\Console;
 
 use ArrayObject;
 

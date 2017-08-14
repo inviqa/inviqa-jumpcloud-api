@@ -1,11 +1,11 @@
 <?php
 
-namespace Inviqa\JumpCloud\Api\Console\Resource\V2;
+namespace Inviqa\JumpCloud\Api\Console;
 
-use Inviqa\JumpCloud\Api\Console\Resource\AbstractResource as BaseClass;
-use Inviqa\JumpCloud\Api\Console\Resource\ResourceList;
+use Inviqa\JumpCloud\Api\Console\AbstractResource as BaseClass;
+use Inviqa\JumpCloud\Api\Console\ResourceList;
 
-abstract class AbstractResource extends BaseClass
+abstract class AbstractResourceV2 extends BaseClass
 {
     public function fetch(array $options = []): ResourceList
     {

@@ -51,14 +51,14 @@ abstract class AbstractAssociations implements Associations
         do {
             $response = $this->client->get($this->formatUri($resource_id, $options));
             $result = json_decode($response->getBody()->getContents(), true);
-            $results['results'] = array_merge($results['results'], $result['results']);
-            $results['totalCount'] = $result['totalCount'];
+            $results['results'] = array_merge($results['results'], $result);
+            $results['totalCount'] = current($response->getHeader('X-Total-Count'));
 
             if ($autoPaginate) {
                 $options['skip'] += $options['limit'];
             }
-        } while ($autoPaginate && $options['skip'] < $result['totalCount']);
-        return $results;
+        } while ($autoPaginate && $options['skip'] < $results['totalCount']);
+        return new ResourceList($results['results'], $results['totalCount']);
     }
 
     public function post($resource_id, $data)

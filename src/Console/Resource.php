@@ -1,11 +1,8 @@
 <?php
 namespace Inviqa\JumpCloud\Api\Console;
 
-interface Resource
+interface Resource extends ReadableResource
 {
-    public function getName(): string;
-    public function fetch(array $options = []): ResourceList;
-    public function get(string $id, array $options = []);
     public function post(array $data);
     public function put(string $id, array $data);
     public function delete(string $id);

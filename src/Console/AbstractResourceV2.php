@@ -7,6 +7,11 @@ use Inviqa\JumpCloud\Api\Console\ResourceList;
 
 abstract class AbstractResourceV2 extends BaseClass
 {
+    /**
+     * @var array
+     */
+    protected $allowedQueryFields = ['limit', 'skip', 'sort', 'fields', 'filter'];
+
     public function fetch(array $options = []): ResourceList
     {
         $autoPaginate = false;

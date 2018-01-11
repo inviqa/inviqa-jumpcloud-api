@@ -8,6 +8,11 @@ use GuzzleHttp\Psr7\Uri;
 abstract class AbstractResource implements Resource
 {
     /**
+     * @var array
+     */
+    protected $allowedQueryFields = ['limit', 'skip', 'sort', 'fields'];
+
+    /**
      * @var string
      */
     protected $endpoint = null;
@@ -30,7 +35,7 @@ abstract class AbstractResource implements Resource
     protected function formatUri(array $options, string $id = null): string
     {
         $uri = new Uri($this->endpoint . ($id ? '/' . $id : ''));
-        foreach (['limit', 'skip', 'sort', 'fields'] as $key) {
+        foreach ($this->allowedQueryFields as $key) {
             if (array_key_exists($key, $options)) {
                 $uri = Uri::withQueryValue($uri, $key, $options[$key]);
             }

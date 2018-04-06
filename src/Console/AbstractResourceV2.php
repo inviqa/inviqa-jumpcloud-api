@@ -12,6 +12,11 @@ abstract class AbstractResourceV2 extends BaseClass
      */
     protected $allowedQueryFields = ['limit', 'skip', 'sort', 'fields', 'filter'];
 
+    public function getIdField(): string
+    {
+        return 'id';
+    }
+
     public function fetch(array $options = []): ResourceList
     {
         $autoPaginate = false;

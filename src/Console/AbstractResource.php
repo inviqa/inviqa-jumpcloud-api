@@ -27,6 +27,11 @@ abstract class AbstractResource implements Resource
         $this->client = $client;
     }
 
+    public function getIdField(): string
+    {
+        return '_id';
+    }
+
     public function getName(): string
     {
         return $this->endpoint;

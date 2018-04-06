@@ -32,7 +32,7 @@ abstract class AbstractResource implements Resource
         return $this->endpoint;
     }
 
-    protected function formatUri(array $options, string $id = null): string
+    protected function formatUri(array $options = [], string $id = null): string
     {
         $uri = new Uri($this->endpoint . ($id ? '/' . $id : ''));
         foreach ($this->allowedQueryFields as $key) {

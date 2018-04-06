@@ -27,7 +27,7 @@ abstract class AbstractBindingV2
         return $this->endpoint;
     }
 
-    protected function formatUri($resource_id, $options)
+    protected function formatUri($resource_id, $options = [])
     {
         $uri = new Uri(sprintf($this->endpoint, $resource_id));
         foreach (['limit', 'skip', 'sort', 'fields'] as $key) {
@@ -71,7 +71,7 @@ abstract class AbstractBindingV2
         return json_decode($response->getBody()->getContents(), true);
     }
 
-    private function postOp(int $resource_id, string $op, string $type, int $id, array $attributes = null): void
+    private function postOp(string $resource_id, string $op, string $type, string $id, array $attributes = null): void
     {
         $data = [
             'attributes' => $attributes,
